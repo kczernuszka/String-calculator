@@ -1,4 +1,4 @@
-from hello import read_numbers_from_string, add
+from hello import read_numbers_from_string, add, read_delimiter
 import unittest
 
 class Test_TestAddition(unittest.TestCase):
@@ -11,6 +11,9 @@ class Test_TestAddition(unittest.TestCase):
         self.assertEqual(read_numbers_from_string("1,2,3"), [1,2,3])
         self.assertEqual(read_numbers_from_string("1\n2\n3"), [1,2,3])
         self.assertEqual(read_numbers_from_string("1\n2,3"), [1,2,3])
+        self.assertEqual(read_numbers_from_string("\\;\n1;2;3"), [1,2,3])
+        self.assertEqual(read_numbers_from_string("\\;\n1\n2\n3"), [1,2,3])
+        self.assertEqual(read_numbers_from_string("\\;\n1;2\n3"), [1,2,3])
     
     def test_add_numbers(self):
         self.assertEqual(add(""), 0)
@@ -21,6 +24,11 @@ class Test_TestAddition(unittest.TestCase):
         self.assertRaises(Exception, read_numbers_from_string, "wrongString")
         self.assertRaises(Exception, read_numbers_from_string, "1,2,g,3,7,8")
         self.assertRaises(Exception, read_numbers_from_string, "1,\n2,3,3,7,8")
+        self.assertRaises(Exception, read_numbers_from_string, "\\;\n1,2,3")
+
+    def test_read_delimiter(self):
+        self.assertEqual(read_delimiter('\\;\n1;2;3'), ';')
+        self.assertEqual(read_delimiter('\\-\n1\n2\n3'), '-')
 
 if __name__ == '__main__':
     unittest.main()       
