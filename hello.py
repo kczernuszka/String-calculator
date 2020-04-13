@@ -1,8 +1,11 @@
+import re
+
 DEFAULT_DELIMITER = ','
+NEW_LINE_CHARACTER = '\n'
 
 def read_numbers_from_string(string):
     if string:
-        tokens = string.split('{}'.format(DEFAULT_DELIMITER))
+        tokens = re.split('[{}{}]'.format(DEFAULT_DELIMITER, NEW_LINE_CHARACTER), string)
         if tokens_are_numbers(tokens):
             numbers = list(map(int, tokens))
             return numbers

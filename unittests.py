@@ -9,6 +9,8 @@ class Test_TestAddition(unittest.TestCase):
     def test_read_numbers_from_string(self):
         self.assertEqual(read_numbers_from_string("1"), [1])
         self.assertEqual(read_numbers_from_string("1,2,3"), [1,2,3])
+        self.assertEqual(read_numbers_from_string("1\n2\n3"), [1,2,3])
+        self.assertEqual(read_numbers_from_string("1\n2,3"), [1,2,3])
     
     def test_add_numbers(self):
         self.assertEqual(add(""), 0)
@@ -18,6 +20,7 @@ class Test_TestAddition(unittest.TestCase):
         self.assertRaises(Exception, read_numbers_from_string, "g,y,c,u")
         self.assertRaises(Exception, read_numbers_from_string, "wrongString")
         self.assertRaises(Exception, read_numbers_from_string, "1,2,g,3,7,8")
+        self.assertRaises(Exception, read_numbers_from_string, "1,\n2,3,3,7,8")
 
 if __name__ == '__main__':
     unittest.main()       
