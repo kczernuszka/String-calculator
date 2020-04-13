@@ -14,10 +14,12 @@ class Test_TestAddition(unittest.TestCase):
         self.assertEqual(read_numbers_from_string("\\;\n1;2;3"), [1,2,3])
         self.assertEqual(read_numbers_from_string("\\;\n1\n2\n3"), [1,2,3])
         self.assertEqual(read_numbers_from_string("\\;\n1;2\n3"), [1,2,3])
+        self.assertEqual(read_numbers_from_string("1,-2,-3"), [1,-2,-3])
     
     def test_add_numbers(self):
         self.assertEqual(add(""), 0)
         self.assertEqual(add("4,5,2,7"), 18)
+        self.assertEqual(add("1,-2,-3"), -4)
 
     def test_validate_tokens(self):
         self.assertRaises(Exception, read_numbers_from_string, "g,y,c,u")

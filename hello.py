@@ -37,10 +37,12 @@ def tokens_are_numbers(tokens):
     return 1
 
 def token_is_number(token):
-    if token.isnumeric():
-        return 1
-    else:
-        return 0
+    try:
+        int(token)
+        is_dig = 1
+    except ValueError:
+        is_dig = 0
+    return is_dig
 
 def read_delimiter(delimiter_string):
     if len(delimiter_string) >= 2:
