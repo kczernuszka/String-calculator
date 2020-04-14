@@ -57,3 +57,13 @@ def is_change_delimiter_string(string):
         return 1
     else:
         return 0
+
+def multiply(string):
+    numbers = read_numbers_from_string(string)
+    mul = 1
+    if numbers:
+        for number in numbers:
+            mul *= number
+        return mul
+    else:
+        return 0

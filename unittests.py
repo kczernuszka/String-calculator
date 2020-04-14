@@ -1,4 +1,4 @@
-from hello import read_numbers_from_string, add, read_delimiter
+from hello import read_numbers_from_string, add, multiply, read_delimiter
 import unittest
 
 class Test_TestAddition(unittest.TestCase):
@@ -37,6 +37,11 @@ class Test_TestAddition(unittest.TestCase):
         self.assertEqual(add(""), 0)
         self.assertEqual(add("4,5,2,7"), 18)
         self.assertEqual(add("1,-2,-3"), -4)
+    
+    def test_multiply(self):
+        self.assertEqual(multiply(""), 0)
+        self.assertEqual(multiply("3,2,4"), 24)
+        self.assertEqual(multiply("3,-2,4"), -24)
 
 if __name__ == '__main__':
     unittest.main()       
