@@ -51,7 +51,10 @@ class Calculator:
 
     def __read_delimiter(self, delimiter_string):
         if len(delimiter_string) >= 2:
-            delimiter = delimiter_string[1]
+            delimiter = delimiter_string[1:]
+            if self.__is_multiple_delimiter(delimiter):
+                delimiter = delimiter[1 : :]
+                delimiter = delimiter[:-1:]
             return delimiter
         else:
             return ''
@@ -69,3 +72,9 @@ class Calculator:
         except ValueError:
             is_dig = 0
         return is_dig
+
+    def __is_multiple_delimiter(self, delimiter):
+        if delimiter[0] == '[' and delimiter[-1] == ']':
+            return 1
+        else:
+            return 0
