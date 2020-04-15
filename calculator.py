@@ -34,7 +34,7 @@ class Calculator:
                     delimiter = DEFAULT_DELIMITER
             else:
                 delimiter = DEFAULT_DELIMITER
-            tokens = re.split('[{}{}]'.format(delimiter, NEW_LINE_CHARACTER), string)
+            tokens = re.split('{}|{}'.format(delimiter, NEW_LINE_CHARACTER), string)
             if self.__tokens_are_numbers(tokens):
                 numbers = list(map(int, tokens))
                 return numbers
@@ -51,10 +51,7 @@ class Calculator:
 
     def __read_delimiter(self, delimiter_string):
         if len(delimiter_string) >= 2:
-            delimiter = delimiter_string[1:]
-            if self.__is_multiple_delimiter(delimiter):
-                delimiter = delimiter[1 : :]
-                delimiter = delimiter[:-1:]
+            delimiter = delimiter_string[1:]                
             return delimiter
         else:
             return ''

@@ -35,6 +35,12 @@ class Test_TestCalculator(unittest.TestCase):
     def test_calculation_from_string_with_multiple_delimiters(self):
         self.assertEqual(self.calculator.add("\\[;,@]\n3;9,15@45"), 72)
 
+    def test_calculation_from_string_with_several_chars_delimiter(self):
+        self.assertEqual(self.calculator.add("\\--;\n3--;9--;15"), 27)
+
+    def test_calculation_from_string_with_several_chars_and_multiple_delimiters(self):
+        self.assertEqual(self.calculator.add("\\--;|[;,@]\n3--;9--;15;45,17"), 89)
+
 if __name__ == '__main__':
     unittest.main()       
     
