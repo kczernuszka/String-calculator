@@ -30,7 +30,6 @@ class Calculator:
                 delimiter = self.__read_delimiter(first_token)
                 string = string.split('\n', 1)[1]
                 if delimiter == '':
-                    delimiter = DEFAULT_DELIMITER
                     raise Exception('Wrong first line format - ignored.')
             else:
                 delimiter = DEFAULT_DELIMITER
