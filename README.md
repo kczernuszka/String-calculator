@@ -5,8 +5,8 @@ String-calculator is program to adding and multiplying numbers from string. Defa
 
 ### Changing delimiter
 
-The user can change delimiter through writing '\\{delimiter}' in the first line, for example: \\-.
+The user can change delimiter through writing '\\\\{delimiter}' in the first line, for example: \\\\-.
 Changing delimiter support regular expression, for example:
 
--\\[;-,]
--\\--;|[;,@]
+- \\\\[;-,]
+- \\\\--;|[;,@]
